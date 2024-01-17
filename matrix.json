@@ -1,0 +1,49 @@
+[
+  {
+    "package-manager": "npm"
+  },
+  {
+    "package-manager": "npm",
+    "shrinkwrap": true,
+    "bundle-dependencies-all": true
+  },
+  {
+    "package-manager": "npm",
+    "bundle-dependencies-all": true
+  },
+  {
+    "package-manager": "npm",
+    "bundle-dependency": ["@oclif/core"],
+    "skip": true
+  },
+  {
+    "package-manager": "pnpm"
+  },
+  {
+    "package-manager": "pnpm",
+    "bundle-dependencies-all": true
+  },
+  {
+    "package-manager": "pnpm",
+    "bundle-dependency": ["@oclif/core"],
+    "skip": true
+  },
+  {
+    "package-manager": "yarn",
+    "yarn-version": "classic"
+  },
+  {
+    "package-manager": "yarn",
+    "yarn-version": "2.x",
+    "skip": true
+  },
+  {
+    "package-manager": "yarn",
+    "yarn-version": "3.x",
+    "skip": true
+  },
+  {
+    "package-manager": "yarn",
+    "yarn-version": "stable"
+  }
+]
