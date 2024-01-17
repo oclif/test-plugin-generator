@@ -1,11 +1,11 @@
-oclif-hello-world
+Test Plugin Generator
 =================
 
-oclif example Hello World CLI
+Generates plugins for @oclif/plugin-plugins integration tests
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![CircleCI](https://circleci.com/gh/oclif/hello-world/tree/main.svg?style=shield)](https://circleci.com/gh/oclif/hello-world/tree/main)
-[![GitHub license](https://img.shields.io/github/license/oclif/hello-world)](https://github.com/oclif/hello-world/blob/main/LICENSE)
+[![CircleCI](https://circleci.com/gh/oclif/test-plugin-generator/tree/main.svg?style=shield)](https://circleci.com/gh/oclif/test-plugin-generator/tree/main)
+[![GitHub license](https://img.shields.io/github/license/oclif/test-plugin-generator)](https://github.com/oclif/test-plugin-generator/blob/main/LICENSE)
 
 <!-- toc -->
 * [Usage](#usage)
@@ -27,9 +27,12 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`pg generate`](#pg-generate)
-* [`pg help [COMMANDS]`](#pg-help-commands)
-* [`pg publish`](#pg-publish)
+- [Test Plugin Generator](#test-plugin-generator)
+- [Usage](#usage)
+- [Commands](#commands)
+  - [`pg generate`](#pg-generate)
+  - [`pg help [COMMANDS]`](#pg-help-commands)
+  - [`pg publish`](#pg-publish)
 
 ## `pg generate`
 
