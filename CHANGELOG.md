@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/oclif/test-plugin-generator/compare/0.2.0...0.3.0) (2024-01-17)
+
+
+### Features
+
+* parallel chunks ([4de00e9](https://github.com/oclif/test-plugin-generator/commit/4de00e9b1ea65808f1be95b69bcdd3c13e00b067))
+
+
+
 # [0.2.0](https://github.com/oclif/test-plugin-generator/compare/0.1.0...0.2.0) (2024-01-17)
 
 
