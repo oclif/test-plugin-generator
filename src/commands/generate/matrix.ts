@@ -3,18 +3,25 @@ import {readFile} from 'node:fs/promises'
 
 import Generate from './index.js'
 
-export default class GenerateMatrix extends Command {
-  static description = 'Generate plugins based on a matrix of options.'
+function chunk<T>(arr: T[], size: number): T[][] {
+  return Array.from({length: Math.ceil(arr.length / size)}, (_, i) => arr.slice(i * size, i * size + size))
+}
 
+export default class GenerateMatrix extends Command {
   static examples = ['<%= config.bin %> <%= command.id %>']
 
   static flags = {
+    'chunk-size': Flags.integer({
+      char: 'c',
+      min: 1,
+      summary: 'Number of plugins to generate at a time.',
+    }),
     matrix: Flags.file({
       char: 'm',
       default: 'matrix.json',
-      description: 'JSON file containing a matrix of options.',
       exists: true,
       required: true,
+      summary: 'JSON file containing a matrix of options.',
     }),
     'output-directory': Flags.directory({
       char: 'd',
@@ -24,6 +31,8 @@ export default class GenerateMatrix extends Command {
     }),
   }
 
+  static summary = 'Generate plugins based on a matrix of options.'
+
   public async run(): Promise<void> {
     const {flags} = await this.parse(GenerateMatrix)
 
@@ -31,23 +40,35 @@ export default class GenerateMatrix extends Command {
       Interfaces.InferredFlags<(typeof Generate)['flags']> & {skip?: boolean}
     >
 
-    await Promise.all(
-      matrix
-        .filter((opts) => !opts.skip)
-        .map(async (opts) => {
-          const compiledFlags = Object.entries(opts)
-            .flatMap(([name, value]) => {
-              if (value === true) return [`--${name}`]
-              if (Array.isArray(value)) return value.flatMap((v) => [`--${name}`, v])
-              if (typeof value === 'string') return [`--${name}`, value]
-              return []
-            })
-            .filter(Boolean)
-          await Generate.run(
-            [...compiledFlags, '--force', '--directory', flags['output-directory'], '--no-spinner'],
-            this.config,
-          )
-        }),
-    )
+    const pluginsToGenerate = matrix
+      .filter((opts) => !opts.skip)
+      .map((opts) =>
+        Object.entries(opts)
+          .flatMap(([name, value]) => {
+            if (value === true) return [`--${name}`]
+            if (Array.isArray(value)) return value.flatMap((v) => [`--${name}`, v])
+            if (typeof value === 'string') return [`--${name}`, value]
+            return []
+          })
+          .filter(Boolean),
+      )
+
+    if (flags['chunk-size']) {
+      const chunks = chunk(pluginsToGenerate, flags['chunk-size'])
+      for (const pluginChunk of chunks) {
+        // eslint-disable-next-line no-await-in-loop
+        await Promise.all(
+          pluginChunk.map((plugin) =>
+            Generate.run([...plugin, '--force', '--directory', flags['output-directory'], '--no-spinner'], this.config),
+          ),
+        )
+      }
+    } else {
+      await Promise.all(
+        pluginsToGenerate.map((plugin) =>
+          Generate.run([...plugin, '--force', '--directory', flags['output-directory'], '--no-spinner'], this.config),
+        ),
+      )
+    }
   }
 }
