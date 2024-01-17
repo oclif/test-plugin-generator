@@ -59,6 +59,13 @@ export default class Generate extends Command {
     'no-spinner': Flags.boolean({
       hidden: true,
     }),
+    'oclif-lock': Flags.boolean({
+      relationships: [
+        // Prevent --oclif-lock from being used when --package-manager does not equal yarn
+        {flags: [{name: 'package-manager', when: async (flags) => flags['package-manager'] !== 'yarn'}], type: 'none'},
+      ],
+      summary: 'Generate oclif.lock for yarn plugins.',
+    }),
     'package-manager': Flags.option({
       char: 'm',
       options: ['npm', 'pnpm', 'yarn'] as const,
@@ -110,6 +117,7 @@ export default class Generate extends Command {
     if (flags['bundle-dependencies-all']) this.log(chalk.dim('bundleDependencies'), flags['bundle-dependencies-all'])
     if (flags['bundle-dependency']) this.log(chalk.dim('bundleDependencies'), flags['bundle-dependency'])
     this.log(chalk.dim('shrinkwrap'), flags.shrinkwrap ?? false)
+    this.log(chalk.dim('oclif-lock'), flags['oclif-lock'] ?? false)
 
     if (await exists(pluginPath)) {
       if (flags.force) {
@@ -199,10 +207,23 @@ export default class Generate extends Command {
         ux.action.status = 'Installing dependencies'
         await executor.exec('yarn', ['install'], {cwd: pluginPath})
 
+        if (flags['oclif-lock']) {
+          await executor.exec(oclif, ['lock'], {cwd: pluginPath})
+        }
+
         const latestPjson = JSON.parse(await readFile(join(pluginPath, 'package.json'), 'utf8'))
         await writeFile(
           join(pluginPath, 'package.json'),
-          JSON.stringify({...latestPjson, name: npmName}, null, 2),
+          JSON.stringify(
+            {
+              ...latestPjson,
+              files: [...latestPjson.files, 'oclif.lock'],
+              name: npmName,
+              scripts: {...latestPjson.scripts, prepack: `${latestPjson.scripts.prepack} && oclif.lock`},
+            },
+            null,
+            2,
+          ),
           'utf8',
         )
       } catch (error) {
@@ -211,10 +232,23 @@ export default class Generate extends Command {
     }
 
     if (flags['package-manager'] === 'yarn' && isYarn1) {
+      if (flags['oclif-lock']) {
+        await executor.exec(oclif, ['lock'], {cwd: pluginPath})
+      }
+
       const latestPjson = JSON.parse(await readFile(join(pluginPath, 'package.json'), 'utf8'))
       await writeFile(
         join(pluginPath, 'package.json'),
-        JSON.stringify({...latestPjson, name: npmName}, null, 2),
+        JSON.stringify(
+          {
+            ...latestPjson,
+            files: [...latestPjson.files, 'oclif.lock'],
+            name: npmName,
+            scripts: {...latestPjson.scripts, prepack: `${latestPjson.scripts.prepack} && oclif.lock`},
+          },
+          null,
+          2,
+        ),
         'utf8',
       )
     }
@@ -230,6 +264,7 @@ export default class Generate extends Command {
       this.flags['bundle-dependencies-all'] ? 'bundle-deps-all' : null,
       this.flags['bundle-dependency'] ? 'bundle-deps' : null,
       this.flags.shrinkwrap ? 'shrinkwrap' : null,
+      this.flags['oclif-lock'] ? 'oclif-lock' : null,
     ]
       .filter(Boolean)
       .join('_')

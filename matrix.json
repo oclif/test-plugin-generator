@@ -34,6 +34,11 @@
   },
   {
     "package-manager": "yarn",
+    "yarn-version": "classic",
+    "oclif-lock": true
+  },
+  {
+    "package-manager": "yarn",
     "yarn-version": "2.x",
     "skip": true
   },
