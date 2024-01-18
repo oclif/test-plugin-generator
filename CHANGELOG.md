@@ -1,3 +1,12 @@
+## [0.3.2](https://github.com/oclif/test-plugin-generator/compare/0.3.1...0.3.2) (2024-01-18)
+
+
+### Bug Fixes
+
+* typo ([c780b38](https://github.com/oclif/test-plugin-generator/commit/c780b38a2533c67a15ae26faa10c2461da6fc8c0))
+
+
+
 ## [0.3.1](https://github.com/oclif/test-plugin-generator/compare/0.3.0...0.3.1) (2024-01-18)
 
 
