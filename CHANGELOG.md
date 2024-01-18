@@ -1,3 +1,12 @@
+## [0.3.1](https://github.com/oclif/test-plugin-generator/compare/0.3.0...0.3.1) (2024-01-18)
+
+
+### Bug Fixes
+
+* **deps:** bump @oclif/plugin-help from 6.0.11 to 6.0.12 ([e963ab1](https://github.com/oclif/test-plugin-generator/commit/e963ab1be344c9ab1715927fa3e31aa319efc7dc))
+
+
+
 # [0.3.0](https://github.com/oclif/test-plugin-generator/compare/0.2.0...0.3.0) (2024-01-17)
 
 
