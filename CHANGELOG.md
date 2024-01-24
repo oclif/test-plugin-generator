@@ -1,3 +1,13 @@
+## [0.4.1](https://github.com/oclif/test-plugin-generator/compare/0.4.0...0.4.1) (2024-01-24)
+
+
+### Bug Fixes
+
+* add shrinkwrap to files ([7e8929b](https://github.com/oclif/test-plugin-generator/commit/7e8929be54f1835cc97ad46ae9f640ad121b5221))
+* install after writing yarnrc ([c14f73f](https://github.com/oclif/test-plugin-generator/commit/c14f73f32177c96047c8451ad1f2e1002e4c682b))
+
+
+
 # [0.4.0](https://github.com/oclif/test-plugin-generator/compare/0.3.2...0.4.0) (2024-01-24)
 
 
