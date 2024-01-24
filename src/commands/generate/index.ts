@@ -134,6 +134,7 @@ export default class Generate extends Command {
     const packageJsonPath = join(pluginPath, 'package.json')
     const packageJson = JSON.parse(await readFile(packageJsonPath, 'utf8')) as {
       bundleDependencies: boolean | string[]
+      files: string[]
       name: string
       scripts: Record<string, string>
     }
@@ -160,6 +161,7 @@ export default class Generate extends Command {
       if (flags.shrinkwrap) {
         ux.action.status = 'Generating shrinkwrap'
         await executor.exec(npm, ['shrinkwrap'], {cwd: pluginPath})
+        packageJson.files = [...(packageJson.files ?? []), 'npm-shrinkwrap.json']
       }
 
       const scripts = packageJson.scripts ?? {}
