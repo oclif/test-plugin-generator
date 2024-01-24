@@ -146,6 +146,7 @@ export default class Publish extends Command {
                 'npmAuthIdent: "username:password"',
               ]
               await writeFile(join(plugin, '.yarnrc.yml'), yarnRc.join('\n'))
+              await executor.exec('yarn', ['install'], {cwd: plugin})
             }
 
             const result = await executor.exec(
