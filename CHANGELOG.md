@@ -1,3 +1,12 @@
+# [0.4.0](https://github.com/oclif/test-plugin-generator/compare/0.3.2...0.4.0) (2024-01-24)
+
+
+### Features
+
+* update bin name ([f912fa6](https://github.com/oclif/test-plugin-generator/commit/f912fa6880cb3b8f9892b92a1424d986dabd16f6))
+
+
+
 ## [0.3.2](https://github.com/oclif/test-plugin-generator/compare/0.3.1...0.3.2) (2024-01-18)
 
 
