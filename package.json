@@ -1,7 +1,7 @@
 {
   "author": "Salesforce",
   "bin": {
-    "pg": "./bin/run.js"
+    "test-plugin-generator": "./bin/run.js"
   },
   "dependencies": {
     "@oclif/core": "^3",
@@ -45,8 +45,8 @@
   "main": "",
   "name": "@oclif/test-plugin-generator",
   "oclif": {
-    "bin": "pg",
-    "dirname": "pg",
+    "bin": "test-plugin-generator",
+    "dirname": "test-plugin-generator",
     "commands": "./dist/commands",
     "plugins": [
       "@oclif/plugin-help"
