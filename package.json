@@ -10,7 +10,7 @@
     "cross-spawn": "^7.0.3",
     "debug": "^4.3.4",
     "npm": "^10.3.0",
-    "pnpm": "^8.14.1"
+    "pnpm": "^8.15.0"
   },
   "description": "generate test plugins for oclif",
   "devDependencies": {
