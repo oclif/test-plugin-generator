@@ -1,3 +1,12 @@
+## [0.4.2](https://github.com/oclif/test-plugin-generator/compare/0.4.1...0.4.2) (2024-01-28)
+
+
+### Bug Fixes
+
+* **deps:** bump pnpm from 8.14.1 to 8.15.0 ([5479af4](https://github.com/oclif/test-plugin-generator/commit/5479af4e095a5aa212fbffde37a1d482c6716726))
+
+
+
 ## [0.4.1](https://github.com/oclif/test-plugin-generator/compare/0.4.0...0.4.1) (2024-01-24)
 
 
