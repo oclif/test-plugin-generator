@@ -1,3 +1,12 @@
+## [0.4.10](https://github.com/oclif/test-plugin-generator/compare/0.4.9...0.4.10) (2024-03-03)
+
+
+### Bug Fixes
+
+* **deps:** bump npm from 10.4.0 to 10.5.0 ([764d8fe](https://github.com/oclif/test-plugin-generator/commit/764d8fe017385d66a8e7b0b7e7626afb3aa65d95))
+
+
+
 ## [0.4.9](https://github.com/oclif/test-plugin-generator/compare/0.4.8...0.4.9) (2024-03-03)
 
 
