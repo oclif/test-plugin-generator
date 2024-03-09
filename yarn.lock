@@ -7130,10 +7130,10 @@ pluralize@^8.0.0:
   resolved "https://registry.npmjs.org/pluralize/-/pluralize-8.0.0.tgz"
   integrity sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==
 
-pnpm@^8.15.1:
-  version "8.15.1"
-  resolved "https://registry.yarnpkg.com/pnpm/-/pnpm-8.15.1.tgz#8adba2d20330c02d3856e18c4eb3819d1d3ca6aa"
-  integrity sha512-gxz0xfi4N0r3FSHU0VPbSdcIbeYVwq98tenX64umMN2sRv6kldZD5VLvLmijqpmj5en77oaWcClnUE31xZyycw==
+pnpm@^8.15.4:
+  version "8.15.4"
+  resolved "https://registry.yarnpkg.com/pnpm/-/pnpm-8.15.4.tgz#c85a4305534f76d461407b59277b954bac97b5c4"
+  integrity sha512-C9Opvp6w6aaSZ23uwAowO6IYuiedmSQUdWFrOY267t0RFG+SwoQ0WPVXsdEn4J1MFx4QW9zWthACs5aFqAFrng==
 
 postcss-selector-parser@^6.0.10:
   version "6.0.15"
