@@ -1,3 +1,12 @@
+## [0.4.14](https://github.com/oclif/test-plugin-generator/compare/0.4.13...0.4.14) (2024-03-17)
+
+
+### Bug Fixes
+
+* **deps:** bump @oclif/core from 3.23.0 to 3.25.2 ([f136c00](https://github.com/oclif/test-plugin-generator/commit/f136c0013e74bff0e0c4559dada0d1ba8aab46ea))
+
+
+
 ## [0.4.13](https://github.com/oclif/test-plugin-generator/compare/0.4.12...0.4.13) (2024-03-11)
 
 
